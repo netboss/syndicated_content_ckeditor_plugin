@@ -1,0 +1,9 @@
+syndicated_content_ckeditor_plugin.base_url_form:
+  path: '/admin/config/syndicated_content_ckeditor_plugin/baseurl'
+  defaults:
+    _form: '\Drupal\syndicated_content_ckeditor_plugin\Form\SyndicatedContentCkEditorPluginForm'
+    _title: 'Syndicated Content CKEditor Plugin'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

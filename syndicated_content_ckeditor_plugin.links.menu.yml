@@ -1,0 +1,6 @@
+syndicated_content_ckeditor_plugin.base_url_form:
+  title: 'Syndicated Content CKEditor Plugin'
+  route_name: syndicated_content_ckeditor_plugin.base_url_form
+  description: 'A description for the menu entry'
+  parent: system.admin_config_system
+  weight: 99

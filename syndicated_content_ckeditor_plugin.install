@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Check requirements for the CKEditor Business Card module.
+ */
+
+/**
+ * Implements hook_requirements().
+ */
+function syndicated_content_ckeditor_plugin_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'install' || $phase == 'runtime') {
+    $plugin_detected = drupal_get_path('module', 'syndicated_content_ckeditor_plugin') . '/js/plugins/syndicated_content_ckeditor_plugin/plugin.js';
+
+    if ($plugin_detected) {
+      $requirements['syndicated_content_ckeditor_plugin'] = [
+        'title' => t('Syndicated Content CKEditor Plugin'),
+        'value' => t('Plugin detected'),
+        'severity' => REQUIREMENT_OK,
+      ];
+    }
+    else {
+      $requirements['syndicated_content_ckeditor_plugin'] = [
+        'title' => t('Syndicated Content CKEditor Plugin'),
+        'value' => t('Plugin not detected'),
+        'severity' => REQUIREMENT_ERROR,
+        'description' => t('Before you can use the CKEditor '),
+      ];
+    }
+  }
+
+  return $requirements;
+}

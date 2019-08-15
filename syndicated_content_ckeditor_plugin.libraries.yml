@@ -1,0 +1,7 @@
+syndicated_content_ckeditor_plugin:
+  version: 1.x
+  js:
+    js/syndicated_content_ckeditor_plugin.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupalSettings

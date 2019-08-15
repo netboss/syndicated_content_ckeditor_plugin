@@ -1,0 +1,47 @@
+<?php
+
+/**
+ * @file
+ * Contains syndicated_content_ckeditor_plugin.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormBase;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function syndicated_content_ckeditor_plugin_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.syndicated_content_ckeditor_plugin':
+      $output = '';
+      $output .= '<h3>' . t('Syndicated Content CKEditor Plugin') . '</h3>';
+      $output .= '<p>' . t('The module adds a Syndicated Content button to the CKEditor toolbar.') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<dl>';
+      $output .= '<dt>' . t('Settings') . '</dt>';
+      $output .= '<dd>' . t('In the <a href=":text-formats">text formats</a> that use ckeditor, move the Syndicated Content icon into the active toolbar.', [':text-formats' => \Drupal::url('filter.admin_overview')]) . '</dd>';
+      $output .= '</dl>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function syndicated_content_ckeditor_plugin_page_attachments(array &$attachments) {
+  // Unconditionally attach an asset to the page.
+  $attachments['#attached']['library'][] = 'syndicated_content_ckeditor_plugin/syndicated_content_ckeditor_plugin';
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function syndicated_content_ckeditor_plugin_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  $config = \Drupal::config('syndicated_content_ckeditor_plugin.baseurl');
+  $json_url = $config->get('json_url');
+  $form['#attached']['drupalSettings']['syndicated_content_ckeditor_plugin']['baseurl'] = $json_url;
+}

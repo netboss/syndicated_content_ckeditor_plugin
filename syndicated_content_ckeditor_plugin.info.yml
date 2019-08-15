@@ -1,0 +1,9 @@
+name: Syndicated Content CKEditor Plugin
+type: module
+description: This plugin module provides a way to embed syndicated content via the CKEditor in Drupal 8
+package: CKEditor
+dependencies:
+  - ckeditor
+version: '8.x-1.0'
+core: '8.x'
+project: 'syndicated_content_ckeditor_plugin'
